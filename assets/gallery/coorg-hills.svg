@@ -1,0 +1,13 @@
+<svg width="1200" height="1200" viewBox="0 0 1200 1200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="1200" fill="#EAF9EE"/>
+  <circle cx="930" cy="220" r="120" fill="#CFF1D8"/>
+  <path d="M0 800C150 720 280 700 420 760C530 807 605 820 712 764C830 702 1005 694 1200 790V1200H0V800Z" fill="#86D29D"/>
+  <path d="M0 890C180 820 333 820 470 872C573 911 680 910 800 855C944 790 1062 781 1200 838V1200H0V890Z" fill="#39A95E"/>
+  <path d="M780 420L920 650H640L780 420Z" fill="#2D7C43"/>
+  <path d="M415 450L590 720H240L415 450Z" fill="#4FB66D"/>
+  <path d="M1030 520L1140 720H920L1030 520Z" fill="#58C076"/>
+  <path d="M516 1200C562 920 666 768 820 650L918 740C794 838 711 978 686 1200H516Z" fill="#FFF8E9"/>
+  <path d="M590 1200C626 1010 702 872 822 773L874 821C780 898 721 1024 699 1200H590Z" fill="#CBD5E1"/>
+  <rect x="90" y="145" width="152" height="84" rx="18" fill="#14532D"/>
+  <text x="166" y="199" text-anchor="middle" fill="white" font-size="36" font-family="Arial, sans-serif" font-weight="700">COORG</text>
+</svg>
