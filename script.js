@@ -39,6 +39,8 @@ const prevButton = document.querySelector(".lightbox-nav.prev");
 const nextButton = document.querySelector(".lightbox-nav.next");
 const galleryButtons = document.querySelectorAll(".gallery-item");
 const enquiryForm = document.getElementById("quickEnquiryForm");
+const navToggle = document.querySelector(".nav-toggle");
+const siteNav = document.querySelector(".site-nav");
 let currentIndex = 0;
 
 function renderLightbox(index) {
@@ -119,5 +121,21 @@ if (enquiryForm) {
     ].join("\n");
 
     window.open(`https://wa.me/919902808648?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+  });
+}
+
+if (navToggle && siteNav) {
+  navToggle.addEventListener("click", () => {
+    const isOpen = navToggle.getAttribute("aria-expanded") === "true";
+
+    navToggle.setAttribute("aria-expanded", String(!isOpen));
+    siteNav.classList.toggle("is-open", !isOpen);
+  });
+
+  siteNav.querySelectorAll("a").forEach((link) => {
+    link.addEventListener("click", () => {
+      navToggle.setAttribute("aria-expanded", "false");
+      siteNav.classList.remove("is-open");
+    });
   });
 }
