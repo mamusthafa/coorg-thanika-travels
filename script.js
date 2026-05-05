@@ -38,6 +38,7 @@ const closeButton = document.querySelector(".lightbox-close");
 const prevButton = document.querySelector(".lightbox-nav.prev");
 const nextButton = document.querySelector(".lightbox-nav.next");
 const galleryButtons = document.querySelectorAll(".gallery-item");
+const enquiryForm = document.getElementById("quickEnquiryForm");
 let currentIndex = 0;
 
 function renderLightbox(index) {
@@ -64,32 +65,59 @@ function showNext(step) {
   renderLightbox(nextIndex);
 }
 
-galleryButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    openLightbox(Number(button.dataset.index));
+if (lightbox && lightboxImage && lightboxCaption) {
+  galleryButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      openLightbox(Number(button.dataset.index));
+    });
   });
-});
 
-closeButton.addEventListener("click", closeLightbox);
-prevButton.addEventListener("click", () => showNext(-1));
-nextButton.addEventListener("click", () => showNext(1));
+  closeButton.addEventListener("click", closeLightbox);
+  prevButton.addEventListener("click", () => showNext(-1));
+  nextButton.addEventListener("click", () => showNext(1));
 
-lightbox.addEventListener("click", (event) => {
-  if (event.target.dataset.close === "true") {
-    closeLightbox();
-  }
-});
+  lightbox.addEventListener("click", (event) => {
+    if (event.target.dataset.close === "true") {
+      closeLightbox();
+    }
+  });
 
-document.addEventListener("keydown", (event) => {
-  if (lightbox.hidden) {
-    return;
-  }
+  document.addEventListener("keydown", (event) => {
+    if (lightbox.hidden) {
+      return;
+    }
 
-  if (event.key === "Escape") {
-    closeLightbox();
-  } else if (event.key === "ArrowLeft") {
-    showNext(-1);
-  } else if (event.key === "ArrowRight") {
-    showNext(1);
-  }
-});
+    if (event.key === "Escape") {
+      closeLightbox();
+    } else if (event.key === "ArrowLeft") {
+      showNext(-1);
+    } else if (event.key === "ArrowRight") {
+      showNext(1);
+    }
+  });
+}
+
+if (enquiryForm) {
+  enquiryForm.addEventListener("submit", (event) => {
+    event.preventDefault();
+
+    const tripType = document.getElementById("tripType").value;
+    const pickupLocation = document.getElementById("pickupLocation").value.trim();
+    const vehicleType = document.getElementById("vehicleType").value;
+
+    if (!pickupLocation) {
+      document.getElementById("pickupLocation").focus();
+      return;
+    }
+
+    const message = [
+      "Hi Coorg Thanika Travels, I would like to book a taxi.",
+      "",
+      `Trip Type: ${tripType}`,
+      `Pickup Location: ${pickupLocation}`,
+      `Vehicle: ${vehicleType}`
+    ].join("\n");
+
+    window.open(`https://wa.me/919902808648?text=${encodeURIComponent(message)}`, "_blank", "noopener");
+  });
+}
